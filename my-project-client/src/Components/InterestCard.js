@@ -15,12 +15,6 @@ class InterestCard extends React.Component{
         this.setState( {clicked: !this.state.clicked } )
     }
 
-    buttonClickHandler = (e) => {
-        //if clicked, send interest to favorites
-        console.log("yay")
-
-    }
-
     render(){
         console.log(this.state.clicked)
         let { category, avatar } = this.props.interest

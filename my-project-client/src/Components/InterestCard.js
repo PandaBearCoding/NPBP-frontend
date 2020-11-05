@@ -8,7 +8,17 @@ class InterestCard extends React.Component{
     }
 
     clickHandler = (e) => {
+        this.props.clickHandler(this.props.interest)
+    }
+
+    updateClickHandler = () => {
         this.setState( {clicked: !this.state.clicked } )
+    }
+
+    buttonClickHandler = (e) => {
+        //if clicked, send interest to favorites
+        console.log("yay")
+
     }
 
     render(){
@@ -17,8 +27,9 @@ class InterestCard extends React.Component{
         return(
             <div>
                 <h1>{category}</h1>
-                <img onClick={this.clickHandler} alt="" src={avatar} />
+                <img onClick={this.updateClickHandler}alt="" src={avatar} />
                 {/* if clicked, render the item container */}
+                <button onClick={this.clickHandler}>&hearts;</button>
                 {this.state.clicked ? <ItemContainer clickHandler={this.clickHandler}/> : console.log("Must click image to display items")}
             </div>
         )

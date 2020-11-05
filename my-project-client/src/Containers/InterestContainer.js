@@ -15,7 +15,7 @@ class InterestContainer extends React.Component {
         .catch(console.log)
     }
 
-    // EL passed down via props to handle interest being clicked
+    // EL passed down via props to handle interest being clicked (and added to favorites)
     clickHandler() {
         this.props.clickHandler(this.props.interest)
     }

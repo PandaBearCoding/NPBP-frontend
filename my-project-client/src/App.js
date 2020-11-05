@@ -22,6 +22,7 @@ class App extends React.Component {
       <div className="App">
         < UserContainer />
         < InterestContainer clickHandler={this.clickHandler} />
+        {/* array state in instantiated with is passed down the favoriteContainer via state */}
         < FavoriteContainer interests={this.state.favorite} />
       </div>
     )

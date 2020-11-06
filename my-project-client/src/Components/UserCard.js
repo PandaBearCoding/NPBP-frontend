@@ -2,6 +2,17 @@ import React from 'react'
 
 class UserCard extends React.Component{
 
+    // need onClick in button
+    // handleDelete = (e) => {
+    //     fetch(`http://localhost:4000/users/${this.props.user.id}`, {
+    //         method: "DELETE"
+    //     })
+    //     .then(response => response.json())
+    //     .then((response) => {
+    //         this.props.deleteUser(this.props.user.id)
+    //     })
+    // }
+
     render(){
         let { username, name, location, profile_pic } = this.props.user
         return(
@@ -10,6 +21,8 @@ class UserCard extends React.Component{
                 <p>{username}</p>
                 <img alt="" src={profile_pic}/>
                 <p>{location}</p>
+                <button>Edit Profile</button>
+                <button>Delete Profile</button>
             </div>
         )
     }

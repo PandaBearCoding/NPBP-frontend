@@ -19,6 +19,16 @@ class UserContainer extends React.Component{
         return this.state.api.map((el) => <UserCard key={el.id} user={el} />)
     }
 
+        // must pass to userCard in renderUsers --> deleteUser={this.props.deleteUser} 
+    // deleteUser = (userId) => {
+    //     let copyOfUsers = this.state.api.filter((user) => {
+    //       return user.id !== userId
+    //     })
+    //     this.setState({
+    //       users: copyOfUsers
+    //     })
+    // }
+
     render(){
         return (
             <div>

@@ -21,7 +21,7 @@ class InterestContainer extends React.Component {
     }
 
     renderInterests = () => {
-        return this.state.api.map((el) => <InterestCard key={el.id} interest={el} clickHandler={this.props.clickHandler}/>)
+        return this.state.api.map((el) => <InterestCard key={el.id} interest={el} clickHandler={this.props.clickHandler} />)
     }
 
     render(){

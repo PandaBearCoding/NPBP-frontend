@@ -28,7 +28,7 @@ class InterestContainer extends React.Component {
         return(
 
             <div>
-                <h1>All Interests</h1>
+                <h1>Interests</h1>
                 <div>
                     {this.state.api.length > 0 ? this.renderInterests() : <h1>LOADING</h1>}
                 </div>

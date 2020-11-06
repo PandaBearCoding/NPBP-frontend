@@ -22,7 +22,7 @@ class UserContainer extends React.Component{
     render(){
         return (
             <div>
-                <h1>All Users</h1>
+                <h1>Users</h1>
                 <div>
                     {/* {this.state.api.length > 0 ? this.renderUsers() : <h1>LOADING</h1>} */}
                     {this.renderUsers()}

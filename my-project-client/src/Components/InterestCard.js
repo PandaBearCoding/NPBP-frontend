@@ -1,5 +1,6 @@
 import React from 'react'
 import ItemContainer from '../Containers/ItemContainer'
+// import ItemCard from './Components/ItemCard'
 
 class InterestCard extends React.Component{
 
@@ -23,6 +24,15 @@ class InterestCard extends React.Component{
         this.setState( {favorited: !this.state.favorited } )
     }
 
+    // categoryItems = () => {
+    //     if (InterestCard.category === ItemCard.interest.id) {
+    //         // render items 
+    //         return < ItemContainer/>
+    //       } else {
+    //         null
+    //     }
+    // }
+
     render(){
         console.log(this.state.clicked)
         let { category, avatar } = this.props.interest
@@ -31,7 +41,10 @@ class InterestCard extends React.Component{
                 <h1>{category}</h1>
                 <img onClick={this.updateItemClickHandler} alt="" src={avatar} />
                 <button onClick={this.clickHandler}>&hearts;</button>
-                {this.state.clicked ? <ItemContainer clickHandler={this.clickHandler}/> : null}
+                {/* We don't want to render the ENTIRE item container w/ all items */}
+                {/* We want to render the item container with items RELATED to the interest card */}
+                    {/* if interest's category === item's interest.id */}
+                {this.state.clicked ? <ItemContainer clickHandler={this.clickHandler} /> : null}
             </div>
         )
     }

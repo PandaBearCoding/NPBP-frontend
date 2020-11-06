@@ -11,11 +11,22 @@ class App extends React.Component {
     favorite: []
   }
 
+  // does this go down into the Intereest Container bc that's where the API is held?
   clickHandler = (interest) => {
     // how to pass interest to FavoriteContainer
     let copiedArray = [interest, ...this.state.favorite]
     this.setState(() => ({favorite: copiedArray}))
   }
+
+  // must pass to UserContainer --> deleteUser={this.deleteUser}
+  // deleteUser = (userId) => {
+  //   let copyOfUsers = [...this.state.api].filter((user) => {
+  //   return user.id !== userId
+  //   })
+  //   this.setState({
+  //   users: copyOfUsers
+  //   })
+  // }
 
   render(){
     return (

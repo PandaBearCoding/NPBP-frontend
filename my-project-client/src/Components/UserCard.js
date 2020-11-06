@@ -9,7 +9,7 @@ class UserCard extends React.Component{
     //     })
     //     .then(response => response.json())
     //     .then((response) => {
-    //         this.props.deleteUser(this.props.user.id)
+    //         this.deleteUser(this.props.user.id)
     //     })
     // }
 
@@ -22,7 +22,7 @@ class UserCard extends React.Component{
                 <img alt="" src={profile_pic}/>
                 <p>{location}</p>
                 <button>Edit Profile</button>
-                <button>Delete Profile</button>
+                <button onClick={this.handleDelete}>Delete Profile</button>
             </div>
         )
     }

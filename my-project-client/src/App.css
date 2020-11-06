@@ -36,3 +36,57 @@
     transform: rotate(360deg);
   }
 }
+
+.profile-image {
+  width: 10%; 
+  border-radius:80%; 
+  box-shadow: 4px 8px 8px 4px blue;
+ }
+
+ .interestcontainer{
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+  margin: unset;
+}
+
+ .interestcard {
+  transition: 0.3s;
+  width: 50%;
+  padding: 10pix;
+  margin: 10pix;
+  text-align: center;
+  display: inline;
+  flex: 0 0 33.333333%;
+}
+
+.interestimage {
+  height: auto; 
+  width: auto; 
+  max-width: 300px; 
+  max-height: 300px;
+}
+
+.itemcontainer{
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+  margin: unset;
+}
+
+.itemcard {
+  transition: 0.3s;
+  width: 50%;
+  padding: 10pix;
+  margin: 10pix;
+  text-align: center;
+  display: inline;
+  flex: 0 0 33.333333%;
+}
+
+.itemimage {
+  height: auto; 
+  width: auto; 
+  max-width: 300px; 
+  max-height: 300px;
+}

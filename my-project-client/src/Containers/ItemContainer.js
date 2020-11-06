@@ -29,7 +29,7 @@ class ItemContainer extends React.Component {
 
             <div>
                 <h2>Items</h2>
-                <div>
+                <div class="itemcontainer">
                     {this.state.api.length > 0 ? this.renderItems() : <h1>LOADING</h1>}
                 </div>
             </div>

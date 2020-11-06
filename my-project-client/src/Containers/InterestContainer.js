@@ -29,7 +29,7 @@ class InterestContainer extends React.Component {
 
             <div>
                 <h1>Interests</h1>
-                <div>
+                <div class="interestcontainer" >
                     {this.state.api.length > 0 ? this.renderInterests() : <h1>LOADING</h1>}
                 </div>
             </div>

@@ -5,9 +5,9 @@ class ItemCard extends React.Component{
     render(){
         let { title, card_image, description } = this.props.item
         return(
-            <div>
+            <div class="itemcard">
                 <h1>{title}</h1>
-                <img alt="" src={card_image}/>
+                <img class="itemimage" alt="" src={card_image}/>
                 <p>{description}</p>
             </div>
         )

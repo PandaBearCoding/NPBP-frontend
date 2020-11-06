@@ -1,6 +1,6 @@
 import React from 'react'
 import ItemContainer from '../Containers/ItemContainer'
-// import ItemCard from './Components/ItemCard'
+import ItemCard from './ItemCard'
 
 class InterestCard extends React.Component{
 
@@ -14,33 +14,37 @@ class InterestCard extends React.Component{
         this.props.clickHandler(this.props.interest)
     }
 
-    // goes into state, grab clicked key and set it equal to true
-    // if true, store copy in favorites container
+    // let us know it was clicked and display the items
     updateItemClickHandler = () => {
         this.setState( {clicked: !this.state.clicked } )
     }
 
-    updateButtonClickHandler = () => {
+    // goes into state, grab clicked key and set it equal to true
+    // if true, store copy in favorites container
+    // NEED TO PASS IN BELOW
+    updateButtonClickHandler = (e) => {
         this.setState( {favorited: !this.state.favorited } )
     }
 
-    // categoryItems = () => {
-    //     if (InterestCard.category === ItemCard.interest.id) {
-    //         // render items 
-    //         return < ItemContainer/>
-    //       } else {
-    //         null
-    //     }
-    // }
+ 
+    //deletes from favorite
+    deleteHandler = (e) => {
+        this.props.deleteHandler(this.props.interest)
+    }
 
     render(){
-        console.log(this.state.clicked)
+        console.log("FAV", this.state.favorited)
+        // console.log("CLICK", this.state.clicked)
+        // console.log(this.props.interest)
         let { category, avatar } = this.props.interest
         return(
-            <div>
+            <div class="interestcard" >
                 <h1>{category}</h1>
-                <img onClick={this.updateItemClickHandler} alt="" src={avatar} />
-                <button onClick={this.clickHandler}>&hearts;</button>
+                <div><img class="interestimage" onClick={this.updateItemClickHandler} alt="" src={avatar} /> </div>
+                {this.props.favorite ? <button onClick={this.deleteHandler}>❌</button> : <button onClick={this.clickHandler}>❤️</button>}
+                {/* <button onClick={this.updateButtonClickHandler}>
+                    {this.props.favorite ? "❌" deleteHandler={this.deleteHandler} : "❤️" clickHandler={this.clickHandler}} */}
+                {/* </button> */}
                 {/* We don't want to render the ENTIRE item container w/ all items */}
                 {/* We want to render the item container with items RELATED to the interest card */}
                     {/* if interest's category === item's interest.id */}

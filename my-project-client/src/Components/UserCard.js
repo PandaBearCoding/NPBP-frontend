@@ -3,7 +3,6 @@ import React from 'react'
 class UserCard extends React.Component{
 
     render(){
-
         let { username, name, location, profile_pic } = this.props.user
         return(
             <div>

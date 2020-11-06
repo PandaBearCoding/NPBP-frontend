@@ -25,7 +25,6 @@ class ItemContainer extends React.Component {
     }
 
     render(){
-        console.log(this.state.api)
         return(
 
             <div>

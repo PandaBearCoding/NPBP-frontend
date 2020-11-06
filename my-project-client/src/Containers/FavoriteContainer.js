@@ -13,8 +13,6 @@ class FavoriteContainer extends React.Component {
                 <h1>Favorites</h1>
                 <h3>{this.renderInterests()}</h3>
             </div>
-
-                
         )
     }
 }

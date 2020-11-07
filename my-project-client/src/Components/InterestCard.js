@@ -38,11 +38,15 @@ class InterestCard extends React.Component{
         }))
     }
 
+    renderItems = () => {
+        return this.props.items.filter(item => item.interest_id === this.props.interest.id)
+    }
+
     render(){
-        console.log("FAV?", this.state.favorited)
-        console.log("Clicked?", this.state.clicked)
-        // console.log("CLICK", this.state.clicked)
-        // console.log(this.props.interest)
+        // console.log("FAV?", this.state.favorited)
+        // console.log("Clicked?", this.state.clicked)
+        // console.log(this.props.interest.id, this.renderItems())
+    
         let { category, avatar } = this.props.interest
         return(
             <div className="interestcard" >
@@ -58,7 +62,7 @@ class InterestCard extends React.Component{
                 {/* We don't want to render the ENTIRE item container w/ all items */}
                 {/* We want to render the item container with items RELATED to the interest card */}
                     {/* if interest's category === item's interest.id */}
-                {/* {this.state.clicked ? <ItemContainer interest={this.props.interest} clickHandler={this.clickHandler} /> : null} */}
+                {this.state.clicked ? <ItemContainer interest={this.props.interest} clickHandler={this.clickHandler} renderItems={this.renderItems}  /> : null}
             </div>
         )
     }

@@ -10,24 +10,31 @@ class InterestContainer extends React.Component {
     }
 
     componentDidMount(){
-        (fetch("http://localhost:4000/api/v1/interests/")
-        .then(resp => resp.json())
-        .then(api => console.log(api))
-        .catch(console.log))
-    }
+        Promise.all([
+            fetch("http://localhost:4000/api/v1/interests/"),
+            fetch("http://localhost:4000/api/v1/items/"),
+          ])
+          .then(([res1, res2]) => { 
+            return Promise.all([res1.json(), res2.json()]) 
+         })
+         .then(([res1, res2]) => {
+           this.setState({interestApi: res1})
+           this.setState({itemApi: res2 })
+         });
+   }
 
     // EL passed down via props to handle interest being clicked (and added to favorites)
-    clickHandler() {
+    clickHandler = () => {
         this.props.clickHandler(this.props.interest)
     }
 
     renderInterests = () => {
-        return this.state.interestApi.map((el) => <InterestCard key={el.id} interest={el} clickHandler={this.props.clickHandler} />)
+        return this.state.interestApi.map((el) => <InterestCard key={el.id} interest={el} clickHandler={this.props.clickHandler} items={this.state.itemApi} />)
     }
 
     render(){
+        // console.log(this.state.interestApi, this.state.itemApi)
         return(
-
             <div>
                 <h1>Interests</h1>
                 <div className="interestcontainer" >

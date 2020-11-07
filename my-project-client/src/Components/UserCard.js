@@ -10,7 +10,7 @@ class UserCard extends React.Component{
         location: this.props.user.location
     }
 
-    updateClickHandler = () => {
+    updateClickHandler = (e) => {
         this.setState({clicked: true})
     }
 
@@ -21,11 +21,15 @@ class UserCard extends React.Component{
     localUpdateHandler = (e) => {
         e.preventDefault()
         this.props.updateHandler(this.props.user.id, this.state.name, this.state.username, this.state.profile_pic, this.state.location)
+        this.setState(previousState => ({
+            clicked: !previousState.clicked
+        }))
     }
 
     localDeleteHandler = (e) => {
         this.props.deleteHandler(this.props.user.id)
     }
+
 
     render(){
         let { username, name, location, profile_pic } = this.props.user
@@ -37,14 +41,14 @@ class UserCard extends React.Component{
                         <input name="username" type= "text" value={this.state.username} onChange={this.changeHandler} />
                         <input name="profile_pic" type= "text" value={this.state.profile_pic} onChange={this.changeHandler} />
                         <input name="location" type= "text" value={this.state.location} onChange={this.changeHandler} />
-                        <button type="submit">Update Profile</button>
+                        <button type="submit" >Update Profile</button>
                     </form>
                 ) :
                 null
                 }
                 <h1>{name}</h1>
                 <p>{username}</p>
-                <img class="profile-image" alt="" src={profile_pic}/>
+                <img className="profile-image" alt="" src={profile_pic}/>
                 <p>{location}</p>
                 <button onClick={this.updateClickHandler}>Edit Profile</button>
                 <button onClick={this.localDeleteHandler}>Delete Profile</button>

@@ -26,7 +26,7 @@ class UserContainer extends React.Component{
             body: JSON.stringify(newUser)
         })
         .then(response => response.json())
-        .then(user => this.setState({api: [...this.state.api, user]}))
+        .then(user => this.setState({api: [ user,...this.state.api ]}))
         .catch(console.log)
     }
 
@@ -49,8 +49,8 @@ class UserContainer extends React.Component{
         .then(user => {
             let newArray = [...this.state.api]
             let foundObject = newArray.find(el => el.id === user.id)
-            newArray[newArray.indexOf(foundObject)] = user
-            this.setState({api: newArray})
+             newArray[newArray.indexOf(foundObject)] = user
+                this.setState({api: newArray})
         })
         .catch(console.log)
     }

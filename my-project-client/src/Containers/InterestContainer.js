@@ -27,6 +27,11 @@ class InterestContainer extends React.Component {
     clickHandler = () => {
         this.props.clickHandler(this.props.interest)
     }
+    
+    //deletes from favorite
+    deleteHandler = (e) => {
+        this.props.deleteHandler(this.props.interest)
+    }
 
     renderInterests = () => {
         return this.state.interestApi.map((el) => <InterestCard key={el.id} interest={el} clickHandler={this.props.clickHandler} items={this.state.itemApi} />)

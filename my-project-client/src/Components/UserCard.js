@@ -1,4 +1,5 @@
 import React from 'react'
+import FavoriteContainer from '../Containers/FavoriteContainer'
 
 class UserCard extends React.Component{
 
@@ -50,6 +51,7 @@ class UserCard extends React.Component{
                 <p>{username}</p>
                 <img className="profile-image" alt="" src={profile_pic}/>
                 <p>{location}</p>
+                <button >View Favorites</button>
                 <button onClick={this.updateClickHandler}>Edit Profile</button>
                 <button onClick={this.localDeleteHandler}>Delete Profile</button>
             </div>

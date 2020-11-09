@@ -1,20 +1,26 @@
 import React from 'react'
-import InterestCard from '../Components/InterestCard'
+import FavoriteCard from '../Components/FavoriteCard'
 
-class FavoriteContainer extends React.Component {
+class FavoriteContainer extends React.Component{
 
-    renderInterests = () => {
-        return this.props.interests.map((el) => <InterestCard key={el.id} interest={el} clickHandler={this.props.clickHandler} deleteHandler={this.props.deleteHandler} favorite />)
+    renderFavorites = () => {
+        return this.props.favorites.map((el) => <FavoriteCard key={el.id} favorite={el} deleteHandler={this.props.deleteHandler} />)
+    }
+
+    deleteHandler = () => {
+        this.props.deleteHandler(this.props.favorites)
     }
 
     render(){
         return(
-            <div> 
-                <h1>Favorites</h1>
-                <h3>{this.renderInterests()}</h3>
+            <div className="favoritecard" >
+                <h1>My Favorites</h1>
+                {this.renderFavorites()}
             </div>
         )
     }
 }
 
 export default FavoriteContainer
+
+

@@ -1,5 +1,7 @@
 import React from 'react'
 import ItemContainer from '../Containers/ItemContainer'
+// import {Route} from 'react-router-dom'
+// import {NavLink} from 'react-router-dom'
 
 class InterestCard extends React.Component{
 
@@ -34,10 +36,13 @@ class InterestCard extends React.Component{
         console.log("fav", this.state.favorited, "Click", this.state.clicked)
         return(
             <div className="interestcard" >
+                {/* <NavLink to={"/interests/:id/items"}> */}
                 <h1>{category}</h1>
-                <div><img className="interestimage" onClick={this.updateItemClickHandler} alt="" src={avatar} /> </div>
+                <div><img className="interestimage" onClick={this.updateItemClickHandler} alt="" src={avatar} /></div>
+                {/* </NavLink> */}
                 <button onClick={this.addToFavHandler}>❤️</button>
                 {this.state.clicked ? <ItemContainer interest={this.props.interest} renderItems={this.renderItems}  /> : null}
+                {/* {this.state.clicked ? <Route path="/items" render={()=> <ItemContainer interest={this.props.interest} renderItems={this.renderItems} />} /> : null} */}
                 {/* {this.props.favorite ? <button onClick={this.deleteHandler}>❌</button> : <button onClick={this.addToFavHandler}>❤️</button>} */}
             </div>
         )

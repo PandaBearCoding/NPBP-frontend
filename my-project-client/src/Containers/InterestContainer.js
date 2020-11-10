@@ -43,7 +43,10 @@ class InterestContainer extends React.Component {
             <div>
                 <h1>Interests</h1>
                 <div className="interestcontainer" >
+                    {/* if path = this render this, 
+                    if path = this render this Swicth */ }
                     {this.state.interestApi.length > 0 ? this.renderInterests() : <h1>LOADING</h1>}
+                    {/* <Route path="/interests/:id/items" render={()=> <ItemContainer interest={this.props.interest} renderItems={this.renderItems} /> } />  */}
                 </div>
             </div>
         )

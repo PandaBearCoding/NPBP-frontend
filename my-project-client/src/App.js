@@ -5,6 +5,7 @@ import './App.css';
 import UserContainer from './Containers/UserContainer'
 import InterestContainer from './Containers/InterestContainer'
 import FavoriteContainer from './Containers/FavoriteContainer'
+import {Route, Switch} from 'react-router-dom'
 
 class App extends React.Component {
 
@@ -37,6 +38,9 @@ class App extends React.Component {
       })))
   }
 
+  // post is working, can add new fav to DB 
+  // issue = rendering favorites
+
   deleteHandler = (favObj) =>{
     let newArray = this.state.favorites.filter(fav => fav.id !== favObj.id)
     this.setState({favorites: newArray})
@@ -45,10 +49,16 @@ class App extends React.Component {
   render(){
     return (
       <div className="App">
-        < UserContainer />
-        < InterestContainer clickHandler={this.clickHandler} />
-        {/* array state in instantiated with is passed down the favoriteContainer via state */}
-        < FavoriteContainer favorites={this.state.favorites} deleteHandler={this.deleteHandler}/>
+        <Switch>
+          <Route path="/users" render={()=> <UserContainer component={UserContainer}/>} />
+          {/* < UserContainer /> */}
+          <Route path="/interests" render={()=> <InterestContainer clickHandler={this.clickHandler} />} />
+          {/* < InterestContainer clickHandler={this.clickHandler} /> */}
+          // this,state,user.favorites 
+          <Route path="/favorites" render={()=> <FavoriteContainer favorites={this.state.favorites} deleteHandler={this.deleteHandler} />} />
+          {/* < FavoriteContainer favorites={this.state.favorites} deleteHandler={this.deleteHandler}/> */}
+          <Route path="/" render={()=> <h1>Welcome to NPBP</h1>} />
+        </Switch>
       </div>
     )
   }

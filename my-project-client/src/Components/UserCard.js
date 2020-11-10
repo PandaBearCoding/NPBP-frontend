@@ -1,5 +1,6 @@
 import React from 'react'
 import FavoriteContainer from '../Containers/FavoriteContainer'
+import {NavLink} from 'react-router-dom'
 
 class UserCard extends React.Component{
 
@@ -47,14 +48,17 @@ class UserCard extends React.Component{
                 ) :
                 null
                 }
-                <h1>{name}</h1>
-                <p>{username}</p>
-                <img className="profile-image" alt="" src={profile_pic}/>
-                <p>{location}</p>
+                <NavLink to={`/users/${this.props.user.id}`}>
+                    <h1>{name}</h1>
+                    <p>{username}</p>
+                    <img className="profile-image" alt="" src={profile_pic}/>
+                    <p>{location}</p>
+                </NavLink>
                 <button >View Favorites</button>
                 <button onClick={this.updateClickHandler}>Edit Profile</button>
                 <button onClick={this.localDeleteHandler}>Delete Profile</button>
             </div>
+
         )
     }
 }

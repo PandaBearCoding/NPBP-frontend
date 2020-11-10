@@ -1,6 +1,7 @@
 import React from 'react'
 import UserCard from '../Components/UserCard'
 import CreateUser from '../Components/CreateUser'
+import {Route, Switch} from 'react-router-dom'
 
 class UserContainer extends React.Component{
 
@@ -15,6 +16,7 @@ class UserContainer extends React.Component{
         .then(api => this.setState({api: api}))
         .catch(console.log)
     }
+
 
     newSubmitHandler = (newUser) => {
         fetch('http://localhost:4000/api/v1/users', {
@@ -73,14 +75,40 @@ class UserContainer extends React.Component{
     }
 
     render(){
+        // 1. when it should render all users (index)
+            // when path = "/users"
+        // 2. when to render a single user (show)
+            // when path = "/users/"id""
         return (
             <div>
                 <h1>Users</h1>
                 <CreateUser newSubmitHandler={this.newSubmitHandler} />
-                <div>
-                    {/* {this.state.api.length > 0 ? this.renderUsers() : <h1>LOADING</h1>} */}
-                    {this.renderUsers()}
-                </div>
+                <Switch>
+                    <Route path="/users/:id" render={(routerProps)=> {
+                        let id = parseInt(routerProps.match.params.id)
+                        let user 
+                        if(this.state.api.length > 0){
+                            user = this.state.api.find(el => el.id === id)
+                        }
+                        // console.log(user)
+                        return ( 
+                        <>
+                            {this.state.api.length > 0 ? (<UserCard user={user} updateHandler={this.updateSubmitHandler} deleteHandler={this.deleteHandler}/>) 
+                                : 
+                                <h1>LOADING</h1>
+                            }
+                        </>
+                        )
+                    }} />
+                    <Route path="/users" render={()=> {
+                        return(
+                        <div>
+                            {this.state.api.length > 0 ? this.renderUsers() : <h1>LOADING</h1>}
+                            {/* {this.renderUsers()} */}
+                        </div>
+                        )
+                    }}/>
+                </Switch>
             </div>
 
         )

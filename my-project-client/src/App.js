@@ -38,24 +38,21 @@ class App extends React.Component {
 
   // deleting, not re-rendering 
   deleteHandler = (favObj) => {
-    // console.log(favObj)
     let temp = this.state.user.favorites.find(fav => fav.user_id === this.state.user.id && fav.interest_id && favObj.id)    
     // console.log(temp)
     fetch(`http://localhost:4000/api/v1/users/42/favorites/${temp.id}`, {
       method: "DELETE"
     })
     .then(resp => resp.json())
-    // .then(console.log)
     .then(resp => {
-    let newArray = this.state.user.fav_interests.filter(fav_i => fav_i.id !== favObj.id)
-    console.log(newArray)
-    this.setState({user: {...this.state.user, fav_interests: newArray}})
+    let newInterestArray = this.state.user.fav_interests.filter(fav_i => fav_i.id !== favObj.id)
+    let newFavArray = this.state.user.favorites.filter(fav => fav.id !== temp.id)
+    this.setState({user: {...this.state.user, fav_interests: newInterestArray, favorites: newFavArray}})
     })
   }
 
   render(){
-    // console.log("HAPPY", this.state.user)
-    // console.log("SAD", this.state.user.favorites)
+    console.log(this.state.user)
     return (
       <div className="App">
         {this.state.user != null ?

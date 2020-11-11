@@ -2,6 +2,7 @@ import React from 'react'
 import UserCard from '../Components/UserCard'
 import CreateUser from '../Components/CreateUser'
 import {Route, Switch} from 'react-router-dom'
+import FavoriteContainer from './FavoriteContainer'
 
 class UserContainer extends React.Component{
 
@@ -12,11 +13,9 @@ class UserContainer extends React.Component{
     componentDidMount(){
         fetch("http://localhost:4000/api/v1/users/")
         .then(resp => resp.json())
-        // .then(console.log)
         .then(api => this.setState({api: api}))
         .catch(console.log)
     }
-
 
     newSubmitHandler = (newUser) => {
         fetch('http://localhost:4000/api/v1/users', {
@@ -74,11 +73,16 @@ class UserContainer extends React.Component{
         return this.state.api.map((el) => <UserCard key={el.id} user={el} updateHandler={this.updateSubmitHandler} deleteHandler={this.deleteHandler}/>)
     }
 
+    favArray = () => {
+        // iterate through fav_interests to pass down to FavoriteContainer via favorites key
+        let iterate = this.state.api.map((el) => el.fav_interests)
+        return iterate[0]
+    }
+
     render(){
-        // 1. when it should render all users (index)
-            // when path = "/users"
-        // 2. when to render a single user (show)
-            // when path = "/users/"id""
+        let favHelper = this.favArray()
+            // console.log("API", this.state.api[0])
+            // console.log("API length", this.state.api.length)
         return (
             <div>
                 <h1>Users</h1>
@@ -90,10 +94,13 @@ class UserContainer extends React.Component{
                         if(this.state.api.length > 0){
                             user = this.state.api.find(el => el.id === id)
                         }
-                        // console.log(user)
                         return ( 
                         <>
-                            {this.state.api.length > 0 ? (<UserCard user={user} updateHandler={this.updateSubmitHandler} deleteHandler={this.deleteHandler}/>) 
+                            {this.state.api.length > 0 ?
+                            <div>
+                                <UserCard user={user} updateHandler={this.updateSubmitHandler} deleteHandler={this.deleteHandler} />
+                                <FavoriteContainer favorites={favHelper} deleteHandler={this.props.deleteHandler} />
+                            </div>
                                 : 
                                 <h1>LOADING</h1>
                             }

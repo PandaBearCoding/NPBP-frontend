@@ -7,7 +7,6 @@ class InterestCard extends React.Component{
 
     state = {
         clicked: false,
-        // favorited: false,
     }
 
     // EL passed down from parent via props to handle button being clicked to add interest to favorites
@@ -33,7 +32,6 @@ class InterestCard extends React.Component{
     
         let { category, avatar } = this.props.interest
 
-        console.log("fav", this.state.favorited, "Click", this.state.clicked)
         return(
             <div className="interestcard" >
                 {/* <NavLink to={"/interests/:id/items"}> */}

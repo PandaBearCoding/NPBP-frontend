@@ -4,64 +4,74 @@ import React from 'react'
 import './App.css';
 import UserContainer from './Containers/UserContainer'
 import InterestContainer from './Containers/InterestContainer'
-import FavoriteContainer from './Containers/FavoriteContainer'
 import {Route, Switch} from 'react-router-dom'
 
 class App extends React.Component {
 
   state = {
-    favorites: []
+    user: {}
   }
 
   componentDidMount(){
-    fetch("http://localhost:4000/api/v1/favorites/")
+    fetch("http://localhost:4000/api/v1/users/42")
     .then(resp => resp.json())
-    .then(favs => (this.setState({favorites: favs})))
+    .then(favs => (this.setState({user: favs})))
     .catch(console.log)
   }
 
-  // how to pass interest to FavoriteContainer
+  // how to pass interest to FavoriteContainer within UserCard
   clickHandler = (interest) => {
-
-      fetch('http://localhost:4000/api/v1/favorites/', {
+      fetch("http://localhost:4000/api/v1/users/42/favorites", {
         method: "POST",
         headers: {
           "content-type": "application/json",
           "accepts": "application/json"
         },
-        body: JSON.stringify({ interest_id: interest.id, user_id: 10 })
+        body: JSON.stringify({ interest_id: interest.id, user_id: 42 })
       })
       .then(resp => resp.json())
       .then(interest => ( 
         this.setState({ 
-        favorites: interest
+        user: interest
       })))
   }
 
-  // post is working, can add new fav to DB 
-  // issue = rendering favorites
 
-  deleteHandler = (favObj) =>{
-    let newArray = this.state.favorites.filter(fav => fav.id !== favObj.id)
-    this.setState({favorites: newArray})
+  deleteHandler = (favObj) => {
+    console.log(favObj)
+    fetch(`http://localhost:4000/api/v1/users/42/favorites/${favObj.id}`, {
+      method: "DELETE"
+    })
+    .then(resp => resp.json())
+    .then(console.log)
+
+    let newArray = this.state.user.fav_interests.filter(fav => fav.id !== favObj.id)
+    this.setState({user: newArray})
   }
 
   render(){
+    // console.log("HAPPY", this.state.user.fav_interests)
     return (
       <div className="App">
-        <Switch>
-          <Route path="/users" render={()=> <UserContainer component={UserContainer}/>} />
+        {this.state.user != null ?
+        (<Switch>
+          <Route path="/users" render={()=> <UserContainer component={UserContainer} favorites={this.state.user.fav_interests} deleteHandler={this.deleteHandler} />} />
           {/* < UserContainer /> */}
           <Route path="/interests" render={()=> <InterestContainer clickHandler={this.clickHandler} />} />
           {/* < InterestContainer clickHandler={this.clickHandler} /> */}
-          // this,state,user.favorites 
-          <Route path="/favorites" render={()=> <FavoriteContainer favorites={this.state.favorites} deleteHandler={this.deleteHandler} />} />
           {/* < FavoriteContainer favorites={this.state.favorites} deleteHandler={this.deleteHandler}/> */}
           <Route path="/" render={()=> <h1>Welcome to NPBP</h1>} />
-        </Switch>
+        </Switch>) : <h1>LOADING</h1>}
       </div>
     )
   }
 }
 
 export default App;
+
+// grab user, build instance method 
+// put user in state 
+
+// acces user, store in state --> DONE 
+// then can debug
+// instabnce method is user that will return user's fav interests --> have array that we can print 

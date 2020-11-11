@@ -3,11 +3,25 @@ import FavoriteCard from '../Components/FavoriteCard'
 
 class FavoriteContainer extends React.Component{
 
+    // renderFavId = () => {
+        // if favoritesId[i].interest_id === favorites[i].id then delete
+        // console.log("Interests Id", this.props.favorites[0].id)
+        // console.log("Favorites Id", this.props.favoritesId[0].interest_id)
+        // let interestId = this.props.favorites.map((el) => el.id)
+        // let favId = this.props.favoritesId.map((el) => el.interest_id)
+        // let id = this.props.favoritesId.map((el) => el.id)
+        // if(interestId === favId){
+        //     return id
+        // }
+
+    // }
+
     renderFavorites = () => {
         return this.props.favorites.map((el) => <FavoriteCard key={el.id} favorite={el} deleteHandler={this.props.deleteHandler} />)
     }
 
     render(){
+        // console.log(this.renderFavId())
         // console.log("MADDY!", this.props.favorites[0])
         if(!this.props.favorites){
             return <h1>LOADING</h1>
@@ -16,6 +30,7 @@ class FavoriteContainer extends React.Component{
             <div className="favoritecard" >
                 <h1>My Favorites</h1>
                 {this.renderFavorites()}
+                {/* {this.renderFavId()} */}
             </div>
         )   
     }

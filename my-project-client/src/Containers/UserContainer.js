@@ -69,8 +69,12 @@ class UserContainer extends React.Component{
     }
 
     renderUsers = () => {
-        // need to pass in delete --> deleteUser={this.props.deleteUser}
         return this.state.api.map((el) => <UserCard key={el.id} user={el} updateHandler={this.updateSubmitHandler} deleteHandler={this.deleteHandler}/>)
+    }
+
+    favIdArray = () => {
+        let needFavId = this.state.api.map((el) => el.favorites)
+        return needFavId[0]
     }
 
     favArray = () => {
@@ -81,8 +85,9 @@ class UserContainer extends React.Component{
 
     render(){
         let favHelper = this.favArray()
-            // console.log("API", this.state.api[0])
-            // console.log("API length", this.state.api.length)
+        let favIdHelper = this.favIdArray()
+        // console.log(this.favArray())
+        // console.log(this.favIdArray())
         return (
             <div>
                 <h1>Users</h1>
@@ -99,8 +104,7 @@ class UserContainer extends React.Component{
                             {this.state.api.length > 0 ?
                             <div>
                                 <UserCard user={user} updateHandler={this.updateSubmitHandler} deleteHandler={this.deleteHandler} />
-                                <FavoriteContainer favorites={favHelper} deleteHandler={this.props.deleteHandler} />
-                            </div>
+                                <FavoriteContainer favorites={favHelper} favoritesId ={favIdHelper} deleteHandler={this.props.deleteHandler} />                            </div>
                                 : 
                                 <h1>LOADING</h1>
                             }

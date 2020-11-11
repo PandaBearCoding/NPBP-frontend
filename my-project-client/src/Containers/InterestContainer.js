@@ -1,6 +1,7 @@
 import React from 'react'
 import InterestCard from '../Components/InterestCard'
 
+
 class InterestContainer extends React.Component {
 
     state = {

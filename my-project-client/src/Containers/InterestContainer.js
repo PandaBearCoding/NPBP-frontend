@@ -50,8 +50,8 @@ class InterestContainer extends React.Component {
                         <div className="interestcontainer">
                             {this.state.interestApi.length > 0 ? this.renderInterests() : <h1>LOADING</h1>}
                         </div> }/>
-                </Switch> */}
-            </div>
+                </Switch>
+            </div> */}
 
 
 {/* <Route path="/users/:id" render={(routerProps)=> {

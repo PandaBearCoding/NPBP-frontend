@@ -2,6 +2,7 @@ import React from 'react'
 import UserCard from '../Components/UserCard'
 import CreateUser from '../Components/CreateUser'
 import {Route, Switch} from 'react-router-dom'
+import {NavLink} from 'react-router-dom'
 import FavoriteContainer from './FavoriteContainer'
 
 class UserContainer extends React.Component{
@@ -104,7 +105,11 @@ class UserContainer extends React.Component{
                             {this.state.api.length > 0 ?
                             <div>
                                 <UserCard user={user} updateHandler={this.updateSubmitHandler} deleteHandler={this.deleteHandler} />
-                                <FavoriteContainer favorites={favHelper} favoritesId ={favIdHelper} deleteHandler={this.props.deleteHandler} />                            </div>
+                                <FavoriteContainer favorites={favHelper} favoritesId ={favIdHelper} deleteHandler={this.props.deleteHandler} />  
+                                <NavLink to={"/interests/"}>
+                                    <h3 class="viewall">View All Interests</h3>
+                                </NavLink>
+                            </div>
                                 : 
                                 <h1>LOADING</h1>
                             }

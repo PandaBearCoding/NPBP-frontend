@@ -91,7 +91,7 @@ class UserContainer extends React.Component{
         // console.log(this.favIdArray())
         return (
             <div>
-                <h1>Users</h1>
+                {/* <h1>Users</h1> */}
                 {/* <CreateUser newSubmitHandler={this.newSubmitHandler} /> */}
                 <Switch>
                     <Route path="/users/:id" render={(routerProps)=> {
@@ -119,6 +119,7 @@ class UserContainer extends React.Component{
                     <Route path="/users" render={()=> {
                         return(
                         <div>
+                            <h3 className="createProfile">Create Your Profile</h3>
                             <CreateUser newSubmitHandler={this.newSubmitHandler} />
                             {this.state.api.length > 0 ? this.renderUsers() : <h1>LOADING</h1>}
                             {/* {this.renderUsers()} */}

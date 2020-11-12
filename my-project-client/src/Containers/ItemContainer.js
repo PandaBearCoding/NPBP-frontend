@@ -21,7 +21,7 @@ class ItemContainer extends React.Component {
     render(){
         return(
             <div>
-                <h2>Items</h2>
+                {/* <h2>Items</h2> */}
                 <div className="itemcontainer">
                     {this.state.filtered ? this.renderItems() : <h1>LOADING</h1>}
                 </div>

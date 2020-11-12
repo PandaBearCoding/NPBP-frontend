@@ -12,7 +12,7 @@ class App extends React.Component {
   }
 
   componentDidMount(){
-    fetch("http://localhost:4000/api/v1/users/42")
+    fetch("http://localhost:4000/api/v1/users/51")
     .then(resp => resp.json())
     .then(favs => (this.setState({user: favs})))
     .catch(console.log)
@@ -20,13 +20,13 @@ class App extends React.Component {
 
   // how to pass interest to FavoriteContainer within UserCard
   clickHandler = (interest) => {
-      fetch("http://localhost:4000/api/v1/users/42/favorites", {
+      fetch("http://localhost:4000/api/v1/users/51/favorites", {
         method: "POST",
         headers: {
           "content-type": "application/json",
           "accepts": "application/json"
         },
-        body: JSON.stringify({ interest_id: interest.id, user_id: 42 })
+        body: JSON.stringify({ interest_id: interest.id, user_id: 51 })
       })
       .then(resp => resp.json())
       .then(interest => ( 
@@ -39,7 +39,7 @@ class App extends React.Component {
   deleteHandler = (favObj) => {
     let temp = this.state.user.favorites.find(fav => fav.user_id === this.state.user.id && fav.interest_id && favObj.id)    
     // console.log(temp)
-    fetch(`http://localhost:4000/api/v1/users/42/favorites/${temp.id}`, {
+    fetch(`http://localhost:4000/api/v1/users/51/favorites/${temp.id}`, {
       method: "DELETE"
     })
     .then(resp => resp.json())
@@ -66,3 +66,6 @@ class App extends React.Component {
 }
 
 export default App;
+
+
+

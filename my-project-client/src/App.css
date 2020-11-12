@@ -207,3 +207,7 @@ input.[type=placeholder] {
   background-color: orange;
   cursor: pointer;
 }
+
+.createProfile{
+  color: orange;
+}

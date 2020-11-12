@@ -19,7 +19,6 @@ class ItemContainer extends React.Component {
     }
 
     render(){
-    // console.log(this.props.renderItems())
         return(
             <div>
                 <h2>Items</h2>

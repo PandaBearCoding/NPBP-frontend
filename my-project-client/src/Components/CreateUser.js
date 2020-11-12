@@ -20,13 +20,13 @@ class CreateUser extends React.Component {
 
     render(){
         return(
-            <form onSubmit={this.localSubmitHandler}>
-                <input name="name" type= "text" placeholder="enter name" value={this.state.name} onChange={this.changeHandler} />
-                <input name="username" type= "text" placeholder="enter username" value={this.state.username} onChange={this.changeHandler} />
-                <input name="profile_pic" type= "text" placeholder="enter profile picture" value={this.state.profile_pic} onChange={this.changeHandler} />
-                <input name="location" type= "text" placeholder="enter location" value={this.state.location} onChange={this.changeHandler} />
-                <button>Create Profile</button>
-            </form>
+            <form className="createuserform" onSubmit={this.localSubmitHandler}>
+            <input name="name" type="text" placeholder="name" value={this.state.name} onChange={this.changeHandler} />
+            <input name="username" type="text" placeholder="username" value={this.state.username} onChange={this.changeHandler} />
+            <input name="profile_pic" type="text" placeholder="profile picture" value={this.state.profile_pic} onChange={this.changeHandler} />
+            <input name="location" type= "text" placeholder="location" value={this.state.location} onChange={this.changeHandler} />
+            <button className="formbutton">Create Profile</button>
+        </form>
         )
     }
 

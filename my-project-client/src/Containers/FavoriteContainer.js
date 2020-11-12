@@ -20,7 +20,6 @@ class FavoriteContainer extends React.Component{
     }
 }
 
-
 export default FavoriteContainer
 
 

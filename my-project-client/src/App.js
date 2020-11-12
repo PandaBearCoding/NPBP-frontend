@@ -1,9 +1,8 @@
 import React from 'react'
-// import { Route, Switch } from 'react-router-dom'
-// import logo from './logo.svg';
 import './App.css';
 import UserContainer from './Containers/UserContainer'
 import InterestContainer from './Containers/InterestContainer'
+import NavBar from './Components/NavBar'
 import {Route, Switch} from 'react-router-dom'
 
 class App extends React.Component {
@@ -55,14 +54,11 @@ class App extends React.Component {
     console.log(this.state.user)
     return (
       <div className="App">
+        <NavBar />
         {this.state.user != null ?
         (<Switch>
           <Route path="/users" render={()=> <UserContainer component={UserContainer} favorites={this.state.user.fav_interests} deleteHandler={this.deleteHandler} />} />
-          {/* < UserContainer /> */}
           <Route path="/interests" render={()=> <InterestContainer clickHandler={this.clickHandler} />} />
-          {/* < InterestContainer clickHandler={this.clickHandler} /> */}
-          {/* < FavoriteContainer favorites={this.state.favorites} deleteHandler={this.deleteHandler}/> */}
-          <Route path="/" render={()=> <h1>Welcome to NPBP</h1>} />
         </Switch>) : <h1>LOADING</h1>}
       </div>
     )
@@ -70,10 +66,3 @@ class App extends React.Component {
 }
 
 export default App;
-
-// grab user, build instance method 
-// put user in state 
-
-// acces user, store in state --> DONE 
-// then can debug
-// instabnce method is user that will return user's fav interests --> have array that we can print 

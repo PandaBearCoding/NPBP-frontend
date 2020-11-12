@@ -40,7 +40,7 @@
 .profile-image {
   width: 10%; 
   border-radius:80%; 
-  box-shadow: 4px 8px 8px 4px blue;
+  box-shadow: 4px 8px 8px 4px rgb(245, 181, 7);
  }
 
  .interestcontainer{
@@ -58,24 +58,29 @@
   text-align: center;
   display: inline;
   flex: 0 0 33.333333%;
+  text-decoration-color: blue;
 }
+
+
 
 .interestimage {
   height: auto; 
   width: auto; 
   max-width: 300px; 
   max-height: 300px;
+  border-radius: 30px;
 }
 
-.itemcontainer{
+/* .itemcontainer{
   display: flex;
   flex-flow: row wrap;
   justify-content: space-around;
   margin: unset;
-}
+} */
 
 .itemcard {
   transition: 0.3s;
+  height: 30%;
   width: 50%;
   padding: 10pix;
   margin: 10pix;
@@ -84,9 +89,121 @@
   flex: 0 0 33.333333%;
 }
 
+.navbarlis {
+  list-style-type: none;
+}
+
+.navbaritems {
+  overflow: hidden;
+  background-color: orange;
+}
+
+.navbaritems a {
+  float: left;
+  color: rgb(0, 108, 250);
+  font-weight: bold;
+  text-align: center;
+  padding: 40px 30px 30px 10px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.navbaritems a:hover {
+  background-color: #ddd;
+  color: black;
+  border-radius: 20px;
+  transition: 1s;
+}
+
+.navbaritems a.active {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.npbp {
+  float: right;
+  color: rgb(0, 108, 250);
+  font-weight: bold;
+  text-align: center;
+  padding: 5px 30px 5px 10px;
+  text-decoration: none;
+  font-size: 30px;
+}
+
 .itemimage {
   height: auto; 
   width: auto; 
-  max-width: 300px; 
-  max-height: 300px;
+  max-width: 100%; 
+  max-height: 100%;
+  border-radius: 30px;
+}
+
+.itemh1 {
+  display: inline;
+}
+
+.interestCategoryName{
+  color: orange;
+}
+
+.usercontainer{
+  border: bold;
+}
+
+.name{
+font-weight: bold;
+color: orange;
+}
+
+.userName{
+  font-weight: bold;
+}
+
+.favoritesh1{
+  font-weight: bold;
+  color: orange;
+}
+
+.buttons{
+  border-radius: 10px;
+  color: rgb(0, 108, 250);
+  font-size: 15px;
+}
+
+.buttons:hover {
+  background-color: orange;
+  cursor: pointer;
+}
+
+.viewall{
+  color:orange
+}
+
+.createuserform{
+  width: 200px;
+  padding: 20px;
+  margin: auto;
+}
+
+
+input[type=text] {
+  padding:10px;
+  border: 2px;
+  margin: 5px 0;
+  box-shadow:0 0 15px 4px rgba(0,0,0,0.06);
+}
+
+input.[type=placeholder] {
+  text-align: center;
+}
+
+.formbutton{
+  border-radius: 10px;
+  color: rgb(0, 108, 250);
+  font-size: 15px;
+}
+
+.formbutton:hover {
+  background-color: orange;
+  cursor: pointer;
 }

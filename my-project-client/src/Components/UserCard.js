@@ -50,17 +50,17 @@ class UserCard extends React.Component{
                 ) :
                 null
                 }
+                <h1 className="name">{name}</h1>
+                <p className="userName">{username}</p>
                 <NavLink to={`/users/${this.props.user.id}`}>
-                    <h1>{name}</h1>
-                    <p>{username}</p>
                     <img className="profile-image" alt="" src={profile_pic}/>
-                    <p>{location}</p>
                 </NavLink>
+                <p>{location}</p>
                 {/* <h1>My Favorites</h1>
                 <p>< FavoriteContainer/></p> */}
                 {/* <button >View Favorites</button> */}
-                <button onClick={this.updateClickHandler}>Edit Profile</button>
-                <button onClick={this.localDeleteHandler}>Delete Profile</button>
+                <button className="buttons" onClick={this.updateClickHandler}>Edit Profile</button>
+                <button className="buttons" onClick={this.localDeleteHandler}>Delete Profile</button>
             </div>
 
         )

@@ -13,7 +13,7 @@ class FavoriteContainer extends React.Component{
         }
         return(
             <div className="favoritecard" >
-                <h1>My Favorites</h1>
+                <h1 className="favoritesh1">My Favorites</h1>
                 {this.renderFavorites()}
             </div>
         )   

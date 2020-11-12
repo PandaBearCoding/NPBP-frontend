@@ -92,7 +92,7 @@ class UserContainer extends React.Component{
         return (
             <div>
                 <h1>Users</h1>
-                <CreateUser newSubmitHandler={this.newSubmitHandler} />
+                {/* <CreateUser newSubmitHandler={this.newSubmitHandler} /> */}
                 <Switch>
                     <Route path="/users/:id" render={(routerProps)=> {
                         let id = parseInt(routerProps.match.params.id)
@@ -119,6 +119,7 @@ class UserContainer extends React.Component{
                     <Route path="/users" render={()=> {
                         return(
                         <div>
+                            <CreateUser newSubmitHandler={this.newSubmitHandler} />
                             {this.state.api.length > 0 ? this.renderUsers() : <h1>LOADING</h1>}
                             {/* {this.renderUsers()} */}
                         </div>
